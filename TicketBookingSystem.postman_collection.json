@@ -1,0 +1,185 @@
+{
+  "info": {
+    "name": "Ticket Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/events",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "events"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Concert\",\n    \"date\": \"2025-07-05\",\n    \"location\": \"Auditorium\",\n    \"totalSeats\": 100\n}"
+        }
+      }
+    },
+    {
+      "name": "Hold Seats",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/bookings/hold",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "bookings",
+            "hold"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"eventId\": 1,\n    \"userId\": \"john@example.com\",\n    \"numberOfSeats\": 2\n}"
+        }
+      }
+    },
+    {
+      "name": "Confirm Booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/bookings/confirm",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "bookings",
+            "confirm"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"holdId\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Cancel Booking",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/bookings/cancel",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "bookings",
+            "cancel"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookingId\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Available Seats",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/bookings/available?eventId=1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "bookings",
+            "available"
+          ],
+          "query": [
+            {
+              "key": "eventId",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cleanup Expired Holds",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/bookings/cleanup",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "bookings",
+            "cleanup"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Booking Summary",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/bookings/summary?userId=john@example.com",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "bookings",
+            "summary"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "john@example.com"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
